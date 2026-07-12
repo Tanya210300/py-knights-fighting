@@ -1,4 +1,4 @@
-from knight import create_knight
+from app.knight import create_knight
 
 
 KNIGHTS = {
