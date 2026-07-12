@@ -1,5 +1,13 @@
 class Knight:
-    def __init__(self, name, hp, power, armour, weapon, potion):
+    def __init__(
+        self,
+        name: str,
+        hp: int,
+        power: int,
+        armour: list,
+        weapon: dict,
+        potion: dict | None,
+    ) -> None:
         self.name = name
         self.hp = hp
         self.power = power
@@ -8,7 +16,7 @@ class Knight:
         self.potion = potion
         self.protection = 0
 
-    def prepare(self):
+    def prepare(self) -> None:
         self.protection = 0
 
         for piece in self.armour:
@@ -26,11 +34,11 @@ class Knight:
             if "protection" in self.potion["effect"]:
                 self.protection += self.potion["effect"]["protection"]
 
-    def check_hp(self):
+    def check_hp(self) -> None:
         if self.hp <= 0:
             self.hp = 0
 
-    def fight(self, enemy):
+    def fight(self, enemy: "Knight") -> None:
         self.hp -= enemy.power - self.protection
         enemy.hp -= self.power - enemy.protection
 
@@ -38,7 +46,7 @@ class Knight:
         enemy.check_hp()
 
 
-def create_knight(knight_data):
+def create_knight(knight_data: dict) -> Knight:
     knight = Knight(
         name=knight_data["name"],
         hp=knight_data["hp"],
@@ -49,5 +57,4 @@ def create_knight(knight_data):
     )
 
     knight.prepare()
-
     return knight

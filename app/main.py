@@ -1,7 +1,6 @@
 from knight import create_knight
 
 
-
 KNIGHTS = {
     "lancelot": {
         "name": "Lancelot",
@@ -90,14 +89,12 @@ KNIGHTS = {
 }
 
 
-def battle(knightsConfig):
+def battle(knights_config: dict) -> dict:
+    lancelot = create_knight(knights_config["lancelot"])
+    arthur = create_knight(knights_config["arthur"])
+    mordred = create_knight(knights_config["mordred"])
+    red_knight = create_knight(knights_config["red_knight"])
 
-    lancelot = create_knight(knightsConfig["lancelot"])
-    arthur = create_knight(knightsConfig["arthur"])
-    mordred = create_knight(knightsConfig["mordred"])
-    red_knight = create_knight(knightsConfig["red_knight"])
-
-    
     lancelot.fight(mordred)
     arthur.fight(red_knight)
 
